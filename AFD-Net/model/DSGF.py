@@ -3,9 +3,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class Self_Adaptive_Weighted_Fusion_Module(nn.Module):
+class Different_Sum_Gate_Fusion(nn.Module):
     def __init__(self, in_chan, is_first=False, use_residual=True, residual_alpha=0.3):
-        super(Self_Adaptive_Weighted_Fusion_Module, self).__init__()
+        super(Different_Sum_Gate_Fusion, self).__init__()
         self.inchan = in_chan
         self.is_first = is_first
         self.use_residual = use_residual
@@ -100,6 +100,6 @@ if __name__ == '__main__':
     input1 = torch.randn((16, 16, 224, 224))
     input2 = torch.randn((16, 16, 224, 224))
     input3 = torch.randn((16, 16, 224, 224))
-    SWFM = Self_Adaptive_Weighted_Fusion_Module(16, is_first=True)
+    SWFM = Different_Sum_Gate_Fusion(16, is_first=True)
     output = SWFM(input1, input2, input3)
     print(output.shape)
